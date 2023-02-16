@@ -1,0 +1,11 @@
+---
+
+- name: Fail if required Garage settings not defined
+  ansible.builtin.fail:
+    msg: >-
+      You need to define a required configuration setting (`{{ item }}`) for using this role.
+  when: "vars[item] == ''"
+  with_items:
+    - garage_garage_domain
+    - garage_garage_rpc_secret
+    - garage_garage_admin_token

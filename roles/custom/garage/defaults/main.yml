@@ -1,0 +1,63 @@
+---
+
+garage_garage_enabled: true
+
+garage_garage_domain: ""
+
+garage_garage_base_path: "{{ garage_base_path }}/garage"
+garage_garage_config_path: "{{ garage_garage_base_path }}/config"
+
+# Folder containing Garage's metadata, put this folder on a SSD if possible
+garage_garage_meta_path: "{{ garage_garage_base_path }}/meta"
+
+# Folder containing Garage's data, this folder will be your main data storage and must be on a large storage (e.g. large HDD)
+garage_garage_data_path: "{{ garage_garage_base_path }}/data"
+
+garage_garage_systemd_required_services_list: ['docker.service']
+
+garage_garage_version: 0.8.1
+
+garage_garage_container_image: "docker.io/dxflrs/garage:v{{ garage_garage_version }}"
+
+# garage_garage_container_labels_traefik_enabled controls whether labels to assist a Traefik reverse-proxy will be attached to the container.
+# See `roles/custom/garage_garage/templates/labels.j2` for details.
+#
+# To inject your own other container labels, see `garage_garage_container_labels_additional_labels`.
+garage_garage_container_labels_traefik_enabled: false
+garage_garage_container_labels_traefik_docker_network: ''
+garage_garage_container_labels_traefik_rule: 'Host(`{{ garage_garage_domain }}`)'
+garage_garage_container_labels_traefik_entrypoints: web-secure
+garage_garage_container_labels_traefik_tls_certResolver: default  # noqa var-naming
+
+# garage_garage_container_labels_additional_labels contains a multiline string with additional labels to add to the container label file.
+# See `roles/custom/collabora_online/templates/labels.j2` for details.
+#
+# Example:
+# garage_garage_container_labels_additional_labels: |
+#   my.label=1
+#   another.label="here"
+garage_garage_container_labels_additional_labels: ''
+
+# Controls whether the collabora container exposes its HTTP port (tcp/9980 in the container).
+#
+# Takes an "<ip>:<port>" or "<port>" value (e.g. "127.0.0.1:9980), or empty string to not expose.
+garage_garage_container_http_host_bind_port: ""
+
+
+garage_garage_rpc_secret: ""
+garage_garage_admin_token: ""
+
+garage_garage_region: "garage"
+
+garage_garage_rpc_bind_addr: "[::]:3901"
+garage_garage_rpc_public_addr: "127.0.0.1:3901"
+
+garage_garage_api_bind_address: "[::]:3900"
+garage_garage_api_root_domain: "s3.{{ garage_garage_domain }}"
+
+garage_garage_web_bind_address: "[::]:3902"
+garage_garage_web_root_domain: "web.{{ garage_garage_domain }}"
+
+garage_garage_k2v_api_bind_address: "[::]:3904"
+
+garage_garage_admin_bind_address: "0.0.0.0:3903"

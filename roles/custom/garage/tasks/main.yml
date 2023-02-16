@@ -1,0 +1,17 @@
+---
+
+- block:
+    - when: garage_garage_enabled | bool
+      ansible.builtin.include_tasks: "{{ role_path }}/tasks/setup_garage_install.yml"
+  tags:
+    - setup-all
+    - setup-garage
+    - install-all
+    - install-garage
+
+- block:
+    - when: not garage_garage_enabled | bool
+      ansible.builtin.include_tasks: "{{ role_path }}/tasks/setup_garage_uninstall.yml"
+  tags:
+    - setup-all
+    - setup-garage

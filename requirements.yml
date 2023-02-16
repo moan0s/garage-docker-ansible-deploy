@@ -1,0 +1,28 @@
+---
+
+- src: geerlingguy.docker
+  version: 6.1.0
+
+- src: git+https://github.com/devture/com.devture.ansible.role.docker_sdk_for_python.git
+  version: 6ba3be490b6f4c6f35ea109aeb8e533fa231b3a5
+
+- src: git+https://github.com/devture/com.devture.ansible.role.playbook_help.git
+  version: c1f40e82b4d6b072b6f0e885239322bdaaaf554f
+
+- src: git+https://github.com/devture/com.devture.ansible.role.systemd_docker_base.git
+  version: 327d2e17f5189ac2480d6012f58cf64a2b46efba
+
+- src: git+https://github.com/devture/com.devture.ansible.role.timesync.git
+  version: 3d5bb2976815958cdce3f368fa34fb51554f899b
+
+- src: git+https://github.com/devture/com.devture.ansible.role.playbook_state_preserver.git
+  version: ff2fd42e1c1a9e28e3312bbd725395f9c2fc7f16
+
+- src: git+https://github.com/devture/com.devture.ansible.role.traefik.git
+  version: 803559c98ebf218713cd2b50bdf7ec94737c086a
+
+- src: git+https://github.com/devture/com.devture.ansible.role.systemd_service_manager.git
+  version: 6ccb88ac5fc27e1e70afcd48278ade4b564a9096
+
+- src: git+https://github.com/devture/com.devture.ansible.role.playbook_runtime_messages.git
+  version: 9b4b088c62b528b73a9a7c93d3109b091dd42ec6

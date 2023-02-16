@@ -1,0 +1,60 @@
+---
+
+########################################################################
+#                                                                      #
+# Playbook                                                            #
+#                                                                      #
+########################################################################
+
+# Controls whether to install Docker or not
+# Also see `devture_docker_sdk_for_python_installation_enabled`.
+garage_playbook_docker_installation_enabled: true
+
+devture_playbook_state_preserver_vars_preservation_dst: "{{ garage_base_path }}/vars.yml"
+devture_playbook_state_preserver_commit_hash_preservation_dst: "{{ garage_base_path }}/git.hash"
+########################################################################
+#                                                                      #
+# /Playbook                                                            #
+#                                                                      #
+########################################################################
+
+
+
+########################################################################
+#                                                                      #
+# com.devture.ansible.role.systemd_service_manager                     #
+#                                                                      #
+########################################################################
+
+devture_systemd_service_manager_services_list_auto: |
+  {{
+    ([{'name': 'garage.service', 'priority': 1000, 'groups': ['garage']}])
+  }}
+
+########################################################################
+#                                                                      #
+# /com.devture.ansible.role.systemd_service_manager                    #
+#                                                                      #
+########################################################################
+
+
+
+########################################################################
+#                                                                      #
+# garage_garage                                                     #
+#                                                                      #
+########################################################################
+
+garage_garage_systemd_required_services_list: |
+  {{
+    (['docker.service'])
+  }}
+
+########################################################################
+#                                                                      #
+# /garage_garage                                                    #
+#                                                                      #
+########################################################################
+
+
+garage_playbook_traefik_role_enabled: false

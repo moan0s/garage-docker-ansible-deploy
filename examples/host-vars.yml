@@ -1,0 +1,9 @@
+# This is your Garage server's domain name.
+#
+# Example value: example.com
+garage_garage_domain: YOUR_DOMAIN_NAME_HERE
+
+# Generating a strong secret is advised (e.g. `pwgen -s 64 1`).
+garage_garage_rpc_secret: ''
+
+garage_garage_admin_token: ''

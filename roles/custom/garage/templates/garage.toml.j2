@@ -1,0 +1,26 @@
+metadata_dir = "/tmp/meta"
+data_dir = "/tmp/data"
+db_engine = "lmdb"
+
+replication_mode = "none"
+
+rpc_bind_addr = "{{ garage_garage_rpc_bind_addr }}"
+rpc_public_addr = "127.0.0.1:3901"
+rpc_secret = "{{ garage_garage_rpc_secret }}"
+
+[s3_api]
+s3_region = "{{ garage_garage_region }}"
+api_bind_addr = "{{ garage_garage_api_bind_address }}"
+root_domain = "{{ garage_garage_api_root_domain }}"
+
+[s3_web]
+bind_addr = "{{ garage_garage_web_bind_address }}"
+root_domain = "{{ garage_garage_web_root_domain }}"
+index = "index.html"
+
+[k2v_api]
+api_bind_addr = "{{ garage_garage_k2v_api_bind_address }}"
+
+[admin]
+api_bind_addr = "{{ garage_garage_admin_bind_address }}"
+admin_token = "{{ garage_garage_admin_token }}"

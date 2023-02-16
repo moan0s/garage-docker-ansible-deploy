@@ -1,0 +1,24 @@
+---
+
+- name: Ensure Garage group is created
+  ansible.builtin.group:
+    name: "{{ garage_user_username }}"
+    gid: "{{ garage_user_gid }}"
+    state: present
+
+- name: Ensure Garage user is created
+  ansible.builtin.user:
+    name: "{{ garage_user_username }}"
+    uid: "{{ garage_user_uid }}"
+    group: "{{ garage_user_username }}"
+    state: present
+
+- name: Ensure Garage base path exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0750"
+    owner: "{{ garage_user_uid }}"
+    group: "{{ garage_user_gid }}"
+  with_items:
+    - "{{ garage_base_path }}"
