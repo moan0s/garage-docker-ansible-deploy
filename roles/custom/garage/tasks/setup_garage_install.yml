@@ -17,6 +17,8 @@
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
+    owner: "{{ garage_user_uid }}"
+    group: "{{ garage_user_gid }}"
     mode: 0640
   with_items:
     - src: "{{ role_path }}/templates/labels.j2"
