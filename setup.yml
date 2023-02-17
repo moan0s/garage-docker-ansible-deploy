@@ -24,7 +24,7 @@
         - install-all
 
 
-    # This role exposes various tags (setup-nextcloud, setup-all, setup-onlyoffice-app, setup-adjust-nextcloud-config, etc.) so we don't tag it here.
+    # This role exposes various tags (setup-garage, setup-all) so we don't tag it here.
     - role: custom/garage
 
     - when: garage_playbook_traefik_role_enabled | bool
