@@ -12,8 +12,6 @@
 
 - Properly configured DNS records for `<your-domain>` (details in [Configuring DNS](configuring-dns.md)).
 
-- `nextcloud.<your-domain>` domain name pointing to your new server - this is where the Nextcloud server will live
-
 - Some TCP ports open. This playbook (actually [Docker itself](https://docs.docker.com/network/iptables/)) configures the server's internal firewall for you. In most cases, you don't need to do anything special. But **if your server is running behind another firewall**, you'd need to open these ports:
 
   - `80/tcp`: HTTP webserver
