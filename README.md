@@ -39,3 +39,7 @@ This playbook started as a copy of these projects and aims to have a similar lay
 # Miscellaneous
 
 Set `garage_garage_debian_buster: true` to avoid a bug with debian buster (tested on a raspi 3A) ([more information](https://github.com/dani-garcia/vaultwarden/issues/2497))
+
+# Developer Notes
+
+`Use ansible_facts[‘distribution_major_version’]` instead of `garage_garage_debian_buster`
