@@ -15,3 +15,9 @@
   tags:
     - setup-all
     - setup-garage
+
+- block:
+    - when: garage_garage_enabled | bool
+      ansible.builtin.include_tasks: "{{ role_path }}/tasks/configure_garage.yml"
+  tags:
+    - configure-garage

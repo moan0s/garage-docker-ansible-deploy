@@ -1,0 +1,5 @@
+---
+
+- name: Configure node
+  ansible.builtin.include_tasks: "{{ role_path }}/tasks/configure_node.yml"
+  loop: "{{ garage_garage_nodes }}"
