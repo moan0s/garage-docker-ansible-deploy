@@ -26,11 +26,6 @@ devture_playbook_state_preserver_commit_hash_preservation_dst: "{{ garage_base_p
 #                                                                      #
 ########################################################################
 
-devture_systemd_service_manager_services_list_auto: |
-  {{
-    ([{'name': 'garage.service', 'priority': 1000, 'groups': ['garage']}])
-  }}
-
 ########################################################################
 #                                                                      #
 # /com.devture.ansible.role.systemd_service_manager                    #
