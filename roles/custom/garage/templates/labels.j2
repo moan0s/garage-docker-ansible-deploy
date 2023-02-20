@@ -1,12 +1,8 @@
 {% if garage_garage_container_labels_traefik_enabled %}
 traefik.enable=true
-{% if garage_garage_container_labels_traefik_docker_network %}
-traefik.docker.network={{ garage_garage_container_labels_traefik_docker_network }}
-{% endif %}
-traefik.http.routers.collabora-online.rule={{ garage_garage_container_labels_traefik_rule }}
-traefik.http.routers.collabora-online.entrypoints={{ garage_garage_container_labels_traefik_entrypoints }}
-traefik.http.routers.collabora-online.tls.certResolver={{ garage_garage_container_labels_traefik_tls_certResolver }}
-traefik.http.services.collabora-online.loadbalancer.server.port=9980
+traefik.http.routers.garage-{{ item.name }}.rule={{ item.rpc_public_addr }}
+traefik.http.routers.garage-{{ item.name }}.entrypoints={{ garage_garage_container_labels_traefik_entrypoints }}
+traefik.http.routers.garage-{{ item.name }}.tls.certResolver={{ garage_garage_container_labels_traefik_tls_certResolver }}
 {% endif %}
 
 {{ garage_garage_container_labels_additional_labels }}
