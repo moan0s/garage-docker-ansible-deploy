@@ -18,12 +18,10 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
 			--name=garage_{{ item.name }} \
 			--log-driver=none \
 			--network host \
-			--label-file={{ garage_garage_base_path }}/labels \
+			--label-file={{ garage_garage_config_path }}/labels_{{ item.name }} \
 			-v {{ garage_garage_config_path }}/garage_{{ item.name }}.toml:/etc/garage.toml \
-			{% if not item.gateway %}
 			-v {{ item.metadata_path }}:/var/lib/garage/meta \
 			-v {{ item.data_path }}:/var/lib/garage/data \
-			{% endif %}
 			{% if garage_garage_debian_buster %}
 			--security-opt seccomp=unconfined \
 			{% endif %}

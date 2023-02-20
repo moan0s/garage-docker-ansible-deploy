@@ -33,16 +33,15 @@
   loop: "{{ garage_garage_nodes }}"
 
 
-- name: Ensure Garage support files installed
+- name: Ensure Garage traefik labels are installed
   ansible.builtin.template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
+    src: "{{ role_path }}/templates/labels.j2"
+    dest: "{{ garage_garage_config_path }}/labels_{{ item.name }}"
     owner: "{{ garage_user_uid }}"
     group: "{{ garage_user_gid }}"
     mode: 0640
-  with_items:
-    - src: "{{ role_path }}/templates/labels.j2"
-      dest: "{{ garage_garage_base_path }}/labels"
+  loop: "{{ garage_garage_nodes }}"
+  when: "garage_playbook_traefik_role_enabled"
 
 - name: Ensure garage node configuration is deployed
   ansible.builtin.template:
