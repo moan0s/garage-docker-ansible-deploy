@@ -10,4 +10,6 @@ garage_user_gid: 3993
 # Not all architectures support all services, so your experience (on non-amd64) may vary.
 garage_architecture: "{{ 'amd64' if ansible_architecture == 'x86_64' else ('arm64' if ansible_architecture == 'aarch64' else ('arm32' if ansible_architecture.startswith('armv') else '')) }}"
 
+garage_playbook_traefik_role_enabled: true
+
 garage_garage_debian_buster: false
