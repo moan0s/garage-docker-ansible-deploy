@@ -66,3 +66,5 @@ garage_garage_k2v_api_bind_address: "[::]"
 
 # this must be without the port
 garage_garage_admin_bind_address: "0.0.0.0"
+
+garage_garage_node_ids: []

@@ -3,3 +3,21 @@
 - name: Configure nodes
   ansible.builtin.include_tasks: "{{ role_path }}/tasks/configure_node.yml"
   loop: "{{ garage_garage_nodes }}"
+- name: Connect nodes
+  ansible.builtin.shell:
+    cmd: "docker exec -it garage_{{garage_garage_nodes[0].name}} /garage node connect {{ item.stdout }}"
+  loop: "{{ garage_garage_node_ids }}"
+- name: Check if changes made to layout
+  ansible.builtin.shell:
+    cmd: "docker exec -it garage_{{garage_garage_nodes[0].name}} /garage layout show | grep 'STAGED ROLE CHANGES'"
+  failed_when: "garage_garage_staged_role_changes_line.rc == 2"
+  register: garage_garage_staged_role_changes_line
+- name: Get layout version number
+  ansible.builtin.shell:
+    cmd: "docker exec -it garage_{{garage_garage_nodes[0].name}} /garage layout show | awk 'END  {print $13}'"
+  register: garage_garage_layout_version
+  when: "garage_garage_staged_role_changes_line.stdout | length > 0"
+- name: Apply layout version number
+  ansible.builtin.shell:
+    cmd: "docker exec -it garage_{{garage_garage_nodes[0].name}} /garage layout apply --version {{ garage_garage_layout_version.stdout }}"
+  when: "garage_garage_staged_role_changes_line.stdout | length > 0"

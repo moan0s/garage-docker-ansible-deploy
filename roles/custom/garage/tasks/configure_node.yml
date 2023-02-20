@@ -4,11 +4,13 @@
   ansible.builtin.shell:
     cmd:  "docker exec -it garage_{{item.name}} /garage status | awk 'FNR == 3  {print $1}'"
   register: garage_node_prefix
-
 - name: Get Garage node id
   ansible.builtin.shell:
     cmd: "docker exec -it garage_{{item.name}} /garage node id | awk 'FNR == 1 {print}'"
   register: garage_node_id
+- name: Build list of node ids
+  ansible.builtin.set_fact:
+    garage_garage_node_ids: "{{garage_garage_node_ids + [garage_node_id]}}"
 - name: Configure Garage data nodes
   ansible.builtin.shell:
     cmd: "docker exec --user={{ garage_user_uid }}:{{ garage_user_gid }} garage_{{item.name}} /garage layout assign -z {{ garage_garage_dc }} -c {{ item.capacity }} {{ garage_node_prefix.stdout }}"
