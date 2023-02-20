@@ -51,5 +51,20 @@ garage_garage_systemd_required_services_list: |
 #                                                                      #
 ########################################################################
 
+########################################################################
+#                                                                      #
+# com.devture.ansible.role.traefik                                     #
+#                                                                      #
+########################################################################
 
-garage_playbook_traefik_role_enabled: false
+# To completely disable the Traefik role from running, use `garage_playbook_traefik_role_enabled: false`.
+# See the comment there for more details about why we have both `devture_traefik_enabled` and `garage_playbook_traefik_role_enabled`.
+
+devture_traefik_uid: "{{ garage_user_uid }}"
+devture_traefik_gid: "{{ garage_user_gid }}"
+
+########################################################################
+#                                                                      #
+# /com.devture.ansible.role.traefik                                    #
+#                                                                      #
+########################################################################
