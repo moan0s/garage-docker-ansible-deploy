@@ -21,6 +21,7 @@
     owner: "{{ garage_user_uid }}"
     group: "{{ garage_user_gid }}"
   loop: "{{ garage_garage_nodes }}"
+#  when: not item.gateway
 
 - name: Ensure Garage node metadata paths exists
   ansible.builtin.file:

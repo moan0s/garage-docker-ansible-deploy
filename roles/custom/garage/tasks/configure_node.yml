@@ -14,7 +14,12 @@
 - name: "Print id"
   debug:
     msg: "Prefix {{ garage_node_id }}"
-- name: Configure Garage nodes
+- name: Configure Garage data nodes
   ansible.builtin.shell:
     cmd: "docker exec --user={{ garage_user_uid }}:{{ garage_user_gid }} garage_{{item.name}} /garage layout assign -z {{ garage_garage_dc }} -c {{ item.capacity }} {{ garage_node_prefix.stdout }}"
+  when: not item.gateway
+- name: Configure Garage gateway node
+  ansible.builtin.shell:
+    cmd: "docker exec --user={{ garage_user_uid }}:{{ garage_user_gid }} garage_{{item.name}} /garage layout assign --gateway -z {{ garage_garage_dc }} {{ garage_node_prefix.stdout }}"
+  when: item.gateway
 
