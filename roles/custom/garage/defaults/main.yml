@@ -38,12 +38,6 @@ garage_garage_container_labels_traefik_tls_certResolver: default  # noqa var-nam
 #   another.label="here"
 garage_garage_container_labels_additional_labels: ''
 
-# Controls whether the collabora container exposes its HTTP port (tcp/9980 in the container).
-#
-# Takes an "<ip>:<port>" or "<port>" value (e.g. "127.0.0.1:9980), or empty string to not expose.
-garage_garage_container_http_host_bind_port: ""
-
-
 garage_garage_rpc_secret: ""
 garage_garage_admin_token: ""
 
