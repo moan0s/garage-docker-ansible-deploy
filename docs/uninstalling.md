@@ -6,7 +6,7 @@ However, if you've installed this on some server where you have other stuff you 
 
 - ensure all garage services are stopped and disabled (`systemctl disable --now 'garage*'`)
 
-- delete the Nextcloud-related systemd .service files (`rm -f /etc/systemd/system/garage*`)
+- delete the Garage-related systemd .service files (`rm -f /etc/systemd/system/garage*`)
 
 - stop and disable Traefik (`systemctl disable --now devture-traefik`)
 
