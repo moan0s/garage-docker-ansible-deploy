@@ -12,6 +12,9 @@ garage_playbook_docker_installation_enabled: true
 
 devture_playbook_state_preserver_vars_preservation_dst: "{{ garage_base_path }}/vars.yml"
 devture_playbook_state_preserver_commit_hash_preservation_dst: "{{ garage_base_path }}/git.hash"
+
+# Controls the additional network that reverse-proxyable services will be connected to.
+garage_playbook_reverse_proxyable_services_additional_network: "{{ devture_traefik_container_network if devture_traefik_enabled else '' }}"
 ########################################################################
 #                                                                      #
 # /Playbook                                                            #
@@ -47,6 +50,8 @@ garage_garage_systemd_required_services_list: |
   {{
     (['docker.service'])
   }}
+
+garage_garage_container_additional_networks: "{{ [garage_playbook_reverse_proxyable_services_additional_network] if garage_playbook_reverse_proxyable_services_additional_network else [] }}"
 
 ########################################################################
 #                                                                      #

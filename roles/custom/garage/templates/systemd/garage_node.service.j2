@@ -27,6 +27,9 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
 			{% endif %}
 			{{ garage_garage_container_image }}
 
+{% for network in garage_garage_container_additional_networks %}
+ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} network connect {{ network }} garage_{{ item.name }}
+{% endfor %}
 ExecStart={{ devture_systemd_docker_base_host_command_docker }} start --attach garage_{{ item.name }}
 
 ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} kill garage_{{ item.name }} 2>/dev/null || true'
