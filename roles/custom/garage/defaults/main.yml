@@ -19,13 +19,14 @@ garage_garage_version: 0.8.1
 
 garage_garage_container_image: "docker.io/dxflrs/garage:v{{ garage_garage_version }}"
 
+garage_garage_container_network: '{{ garage_docker_network }}'
+
 # garage_garage_container_labels_traefik_enabled controls whether labels to assist a Traefik reverse-proxy will be attached to the container.
 # See `roles/custom/garage_garage/templates/labels.j2` for details.
 #
 # To inject your own other container labels, see `garage_garage_container_labels_additional_labels`.
 garage_garage_container_labels_traefik_enabled: false
-garage_garage_container_labels_traefik_docker_network: ''
-garage_garage_container_labels_traefik_rule: 'Host(`{{ garage_garage_domain }}`)'
+garage_garage_container_labels_traefik_docker_network: "{{ garage_garage_container_network }}"
 garage_garage_container_labels_traefik_entrypoints: web-secure
 garage_garage_container_labels_traefik_tls_certResolver: default  # noqa var-naming
 

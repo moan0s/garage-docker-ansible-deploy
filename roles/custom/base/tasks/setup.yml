@@ -22,3 +22,8 @@
     group: "{{ garage_user_gid }}"
   with_items:
     - "{{ garage_base_path }}"
+
+- name: Ensure Garage network is created in Docker
+  community.docker.docker_network:
+    name: "{{ garage_docker_network }}"
+    driver: bridge

@@ -17,7 +17,7 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
 			--rm \
 			--name=garage_{{ item.name }} \
 			--log-driver=none \
-			--network host \
+			--network={{ garage_garage_container_labels_traefik_docker_network }} \
 			--label-file={{ garage_garage_config_path }}/labels_{{ item.name }} \
 			-v {{ garage_garage_config_path }}/garage_{{ item.name }}.toml:/etc/garage.toml \
 			-v {{ item.metadata_path }}:/var/lib/garage/meta \
