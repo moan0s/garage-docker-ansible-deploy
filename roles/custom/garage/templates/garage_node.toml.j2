@@ -10,8 +10,10 @@ rpc_secret = "{{ garage_garage_rpc_secret }}"
 
 [s3_api]
 s3_region = "{{ garage_garage_region }}"
+{% if item.s3_api_root_domain is defined  %}
 api_bind_addr = "{{ garage_garage_api_bind_address }}:{{ item.api_port }}"
-root_domain = "{{ garage_garage_api_root_domain }}"
+root_domain = "{{ item.s3_api_root_domain }}"
+{% endif  %}
 
 [admin]
 api_bind_addr = "{{ garage_garage_admin_bind_address }}:{{ item.admin_port }}"
