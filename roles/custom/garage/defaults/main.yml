@@ -31,7 +31,7 @@ garage_garage_container_additional_networks: []
 #
 # To inject your own other container labels, see `garage_garage_container_labels_additional_labels`.
 garage_garage_container_labels_traefik_enabled: false
-garage_garage_container_labels_traefik_docker_network: "{{ garage_garage_container_network }}"
+garage_garage_container_labels_traefik_docker_network: ""
 garage_garage_container_labels_traefik_entrypoints: web-secure
 garage_garage_container_labels_traefik_tls_certResolver: default  # noqa var-naming
 
