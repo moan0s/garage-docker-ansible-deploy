@@ -25,7 +25,10 @@ devture_playbook_state_preserver_commit_hash_preservation_dst: "{{ garage_base_p
 # com.devture.ansible.role.systemd_service_manager                     #
 #                                                                      #
 ########################################################################
-
+devture_systemd_service_manager_services_list_auto: |
+  {{
+    ([{'name': ('devture-traefik.service'), 'priority': 5000, 'groups': ['garage', 'traefik', 'reverse-proxies']}] if devture_traefik_enabled else [])
+  }}
 ########################################################################
 #                                                                      #
 # /com.devture.ansible.role.systemd_service_manager                    #
