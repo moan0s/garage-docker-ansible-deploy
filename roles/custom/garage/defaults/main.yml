@@ -21,6 +21,11 @@ garage_garage_container_image: "docker.io/dxflrs/garage:v{{ garage_garage_versio
 
 garage_garage_container_network: '{{ garage_docker_network }}'
 
+# A list of additional container networks that the container would be connected to.
+# The role does not create these networks, so make sure they already exist.
+# Use this to expose this container to a reverse proxy, which runs in a different container network.
+garage_garage_container_additional_networks: []
+
 # garage_garage_container_labels_traefik_enabled controls whether labels to assist a Traefik reverse-proxy will be attached to the container.
 # See `roles/custom/garage_garage/templates/labels.j2` for details.
 #
