@@ -5,7 +5,7 @@ db_engine = "lmdb"
 replication_mode = "none"
 
 rpc_bind_addr = "{{ garage_garage_rpc_bind_addr }}:{{ item.rpc_port }}"
-rpc_public_addr = "{{ item.rpc_public_addr }}:{{ item.rpc_port }}"
+rpc_public_addr = "{{ item.rpc_public_addr }}:443"
 rpc_secret = "{{ garage_garage_rpc_secret }}"
 
 [s3_api]
