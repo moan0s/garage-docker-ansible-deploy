@@ -21,3 +21,15 @@
       ansible.builtin.include_tasks: "{{ role_path }}/tasks/configure_garage.yml"
   tags:
     - configure-garage
+
+- block:
+    - when: garage_garage_enabled | bool
+      ansible.builtin.include_tasks: "{{ role_path }}/tasks/create_bucket.yml"
+  tags:
+    - create-bucket
+
+- block:
+    - when: garage_garage_enabled | bool
+      ansible.builtin.include_tasks: "{{ role_path }}/tasks/create_access_key.yml"
+  tags:
+    - create-key

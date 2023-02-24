@@ -1,0 +1,24 @@
+---
+
+- name: Fail if playbook called incorrectly
+  ansible.builtin.fail:
+    msg: "The `bucket` variable needs to be provided to this playbook, via --extra-vars"
+  when: "bucket is not defined or bucket == '<your-bucket>'"
+
+- name: Ensure garage node is started
+  ansible.builtin.service:
+    name: "garage_{{ garage_garage_nodes[0].name }}"
+    state: started
+    daemon_reload: true
+  register: start_result
+
+- name: Wait a while, so that the Garage node can manage to start
+  ansible.builtin.pause:
+    seconds: 7
+  when: "start_result.changed"
+
+- name: Create bucket user
+  ansible.builtin.command:
+    cmd: "docker exec -it garage_{{ garage_garage_nodes[0].name }} /garage bucket create {{ bucket | quote }}"
+  register: garage_garage_create_bucket_result
+  changed_when: garage_garage_create_bucket_result.rc == 0
