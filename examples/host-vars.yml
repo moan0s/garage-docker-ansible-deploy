@@ -1,9 +1,58 @@
-# This is your Garage server's domain name.
-#
-# Example value: example.com
-garage_garage_domain: YOUR_DOMAIN_NAME_HERE
+# Generating a strong secret is advised (e.g. `pwgen -s 64 1`).
+garage_garage_rpc_secret: 'verysecret'
 
 # Generating a strong secret is advised (e.g. `pwgen -s 64 1`).
-garage_garage_rpc_secret: ''
+garage_garage_admin_token: 'verysecret'
 
-garage_garage_admin_token: ''
+# Uncomment the following line if you run this on a Raspberry Pi 3
+# garage_garage_debian_buster: true
+
+# This is the zone that your host will be in. Refer to https://garagehq.deuxfleurs.fr/documentation/cookbook/real-world/#creating-a-cluster-layout
+# for more information
+garage_garage_zone: "dc1"
+
+
+########################
+## NODE CONFIGURATION ##
+########################
+
+# This is an example configuration of nodes. On this host we run 2 data nodes that both manage 1 3TB drive.
+# We access the nodes via a gateway node.
+
+garage_garage_node1_base_path: "/media/drive1/garage/node1"
+garage_garage_node2_base_path: "/media/drive2/garage/node2"
+garage_garage_nodes:
+  - name: "gateway1"
+    metadata_path: "{{ garage_garage_meta_path }}/gw1"
+    data_path: "{{ garage_garage_data_path }}/gw1"
+    gateway: true
+    rpc_bind_port: 3901
+    node_addr: "garage-gw1.example.com"
+    s3_api_addr: "s3.example.com"
+  - name: "node1"
+    gateway: false
+    capacity: 3
+    metadata_path: "{{ garage_garage_node1_base_path }}/metadata"
+    data_path: "{{ garage_garage_node1_base_path }}/data"
+    rpc_bind_port: 3911
+    node_addr: "garage-node1.example.com"
+  - name: "node2"
+    gateway: false
+    capacity: 3
+    metadata_path: "{{ garage_garage_node2_base_path }}/metadata"
+    data_path: "{{ garage_garage_node2_base_path }}/data"
+    rpc_bind_port: 3921
+    node_addr: "garage-node2.example.com"
+
+#############
+### TRAFIK ##
+#############
+
+devture_traefik_ssl_email_address: "certs@example.com"
+
+# For debugging purposes it can be helpful to use the traefik dashboard
+# Set a DNS record for `devture_traefik_dashboard_hostname` and uncomment&adjust the following lines
+# devture_traefik_dashboard_enabled: true
+# devture_traefik_dashboard_basicauth_user: "admin"
+# devture_traefik_dashboard_basicauth_password: "supersecret"
+# devture_traefik_dashboard_hostname: "traefik-firefly.example.com"
