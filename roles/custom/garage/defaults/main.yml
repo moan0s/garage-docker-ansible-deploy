@@ -2,8 +2,6 @@
 
 garage_garage_enabled: true
 
-garage_garage_domain: ""
-
 garage_garage_base_path: "{{ garage_base_path }}/garage"
 garage_garage_config_path: "{{ garage_garage_base_path }}/config"
 
