@@ -19,6 +19,8 @@ garage_garage_zone: "dc1"
 # This is an example configuration of nodes. On this host we run 2 data nodes that both manage 1 3TB drive.
 # We access the nodes via a gateway node.
 
+garage_garage_replication_mode: 2
+
 garage_garage_node1_base_path: "/media/drive1/garage/node1"
 garage_garage_node2_base_path: "/media/drive2/garage/node2"
 garage_garage_nodes:

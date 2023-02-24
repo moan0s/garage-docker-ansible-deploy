@@ -2,7 +2,7 @@ metadata_dir = "/tmp/meta"
 data_dir = "/tmp/data"
 db_engine = "lmdb"
 
-replication_mode = "none"
+replication_mode = "{{ garage_garage_replication_mode }}"
 
 rpc_bind_addr = "{{ garage_garage_rpc_bind_addr_prefix }}:{{ garage_garage_rpc_bind_port }}"
 rpc_public_addr = "{{ item.node_addr }}:{{ item.rpc_bind_port }}"

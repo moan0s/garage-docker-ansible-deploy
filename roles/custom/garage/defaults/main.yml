@@ -42,6 +42,8 @@ garage_garage_container_labels_traefik_tls_certResolver: default  # noqa var-nam
 #   another.label="here"
 garage_garage_container_labels_additional_labels: ''
 
+garage_garage_replication_mode: "none"
+
 garage_garage_rpc_secret: ""
 garage_garage_admin_token: ""
 garage_garage_admin_api_enabled: true
