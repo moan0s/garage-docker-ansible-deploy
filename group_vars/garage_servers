@@ -51,6 +51,7 @@ garage_garage_systemd_required_services_list: |
     (['docker.service'])
   }}
 
+garage_garage_container_labels_traefik_enabled: true
 garage_garage_container_labels_traefik_docker_network: "{{ garage_playbook_reverse_proxyable_services_additional_network }}"
 garage_garage_container_additional_networks: "{{ [garage_playbook_reverse_proxyable_services_additional_network] if garage_playbook_reverse_proxyable_services_additional_network else [] }}"
 
