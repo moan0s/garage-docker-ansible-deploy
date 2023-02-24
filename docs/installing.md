@@ -25,6 +25,8 @@ Here are some playbook tags that you should be familiar with:
 
 - `stop` - stops all systemd services
 
+- `configure-garage` - applies your configuration to the nodes
+
 `setup-*` tags and `install-*` tags **do not start services** automatically, because you may wish to do things before starting services, such as importing a database dump, restoring data from another server, etc.
 
 
@@ -35,3 +37,8 @@ Run the playbook: `ansible-playbook -i inventory/hosts setup.yml --tags=setup-al
 If your inventory file (`vars.yml`) contains encrypted variables, you may need to pass `--ask-vault-pass` to the `ansible-playbook` command.
 
 After installing, you can start services with `just start-all` (or `ansible-playbook -i inventory/hosts setup.yml --tags=start`).
+
+**Important**
+
+When all services are successfully started you need to configure the nodes (connect them and apply a layout).
+Use `ansible-playbook -i inventory/hosts setup.yml --tags=configure-garage`
