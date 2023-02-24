@@ -9,12 +9,13 @@ such a cluster:
 - with everything run in [Docker](https://www.docker.com/) containers
 - powered by [the official Garage container image](https://hub.docker.com/r/dxflrs/garage)
 - [interoperates nicely](docs/configuring-playbook-interoperability.md) with [related](#related) Ansible playbooks or other services using Traefik for reverse-proxying
+* Reverse Proxy automatically managed by [Traefik](https://traefik.io).
 
 ## Planned Features
 
-* Reverse Proxy automatically managed by [Traefik](https://traefik.io).
-* Documentation explaining on how to run this playbook on multiple nodes
-* Gatway node support
+* Multiple host support
+  * Testing
+  * Documentation explaining on how to run this playbook on multiple hosts
 
 ## Installing
 
