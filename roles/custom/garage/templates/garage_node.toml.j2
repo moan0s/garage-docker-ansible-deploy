@@ -4,17 +4,19 @@ db_engine = "lmdb"
 
 replication_mode = "none"
 
-rpc_bind_addr = "{{ garage_garage_rpc_bind_addr }}:{{ item.rpc_port }}"
-rpc_public_addr = "{{ item.rpc_public_addr }}:443"
+rpc_bind_addr = "{{ garage_garage_rpc_bind_addr_prefix }}:{{ garage_garage_rpc_bind_port }}"
+rpc_public_addr = "{{ item.node_addr }}:{{ item.rpc_bind_port }}"
 rpc_secret = "{{ garage_garage_rpc_secret }}"
 
 [s3_api]
 s3_region = "{{ garage_garage_region }}"
-{% if item.s3_api_root_domain is defined  %}
-api_bind_addr = "{{ garage_garage_api_bind_address }}:{{ item.api_port }}"
-root_domain = "{{ item.s3_api_root_domain }}"
+{% if item.gateway  %}
+api_bind_addr = "{{ garage_garage_api_bind_address_prefix }}:{{ garage_garage_api_bind_port }}"
+root_domain = "{{ item.node_addr }}"
 {% endif  %}
-
+  
+{% if garage_garage_admin_api_enabled %}
 [admin]
-api_bind_addr = "{{ garage_garage_admin_bind_address }}:{{ item.admin_port }}"
+api_bind_addr = "{{ garage_garage_admin_bind_address_prefix }}:{{ garage_garage_admin_bind_port }}"
 admin_token = "{{ garage_garage_admin_token }}"
+{% endif %}

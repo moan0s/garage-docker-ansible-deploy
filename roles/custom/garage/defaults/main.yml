@@ -46,25 +46,25 @@ garage_garage_container_labels_additional_labels: ''
 
 garage_garage_rpc_secret: ""
 garage_garage_admin_token: ""
+garage_garage_admin_api_enabled: true
 
 garage_garage_region: "garage"
 
+garage_garage_bind_interface_prefix: "0.0.0.0"
+garage_garage_rpc_bind_port: 3901
+garage_garage_api_bind_port: 3900
+garage_garage_admin_bind_port: 3902
+
 # this must be without the port
-garage_garage_rpc_bind_addr: "[::]"
+garage_garage_rpc_bind_addr_prefix: "{{ garage_garage_bind_interface_prefix }}"
 garage_garage_rpc_public_addr: ""
 
-# this must be without the port
-garage_garage_api_bind_address: "[::]"
-garage_garage_api_root_domain: "s3.{{ garage_garage_domain }}"
+garage_garage_api_bind_address_prefix: "{{ garage_garage_bind_interface_prefix }}"
 
-# this must be without the port
-garage_garage_web_bind_address: "[::]"
-garage_garage_web_root_domain: "web.{{ garage_garage_domain }}"
+garage_garage_web_bind_address_prefix: "{{ garage_garage_bind_interface_prefix }}"
 
-# this must be without the port
-garage_garage_k2v_api_bind_address: "[::]"
+garage_garage_k2v_api_bind_address_prefix: "{{ garage_garage_bind_interface_prefix }}"
 
-# this must be without the port
-garage_garage_admin_bind_address: "0.0.0.0"
+garage_garage_admin_bind_address_prefix: "{{ garage_garage_bind_interface_prefix }}"
 
 garage_garage_node_ids: []

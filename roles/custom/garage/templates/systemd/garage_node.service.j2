@@ -22,6 +22,7 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
 			-v {{ garage_garage_config_path }}/garage_{{ item.name }}.toml:/etc/garage.toml \
 			-v {{ item.metadata_path }}:/var/lib/garage/meta \
 			-v {{ item.data_path }}:/var/lib/garage/data \
+			-p {{ item.rpc_bind_port }}:{{ garage_garage_rpc_bind_port }} \
 			{% if garage_garage_debian_buster %}
 			--security-opt seccomp=unconfined \
 			{% endif %}
