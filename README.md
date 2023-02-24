@@ -20,6 +20,22 @@ such a cluster:
 
 To configure and install Garage on your own server(s), follow the [README in the docs/ directory](docs/README.md).
 
+## Design
+
+Garage is a very flexible software that can server a lot of use-cases. This playbook is opinionated in the sense that it
+reduces the flexibility of garage in favor of an easy deployment that should serve common use cases. While the playbook
+should of course be reusable and fairly modular it will never be a solution to all use cases. Assumptions that are made
+currently:
+
+- Nodes have a public IPv4/IPv6 address
+- one subdomain per node, 1 additional subdomain per gateway node
+
+The playbook will by default 
+
+* Enable the admin API for each node, reachable via the assigned subdomain
+* Expose a user-defined port per node for replication
+* Use a gateway to expose the s3 API on a new subdomain
+
 ## Support
 
 - Matrix room: [#garage-docker-ansible-deploy:hyteck.de](https://matrix.to/#/#garage-docker-ansible-deploy:hyteck.de)
