@@ -10,12 +10,10 @@ On both servers runs a gateway (gw). Server1 has two nodes as e.g. it has two dr
 | Type  | Host                       | Priority | Weight | Port | Target                   |
 |-------|----------------------------|----------|--------|------|--------------------------|
 | A     | `garage-gw1.example.com`   | -        | -      | -    | `IP server1`             |
-| CNAME | `garage-admin.example.com` | -        | -      | -    | `garage-gw1.example.com` |
 | CNAME | `garage-api.example.com`   | -        | -      | -    | `garage-gw1.example.com` |
 | CNAME | `garage-node1.example.com` | -        | -      | -    | `garage-gw1.example.com` |
 | CNAME | `garage-node2.example.com` | -        | -      | -    | `garage-gw1.example.com` |
-| A     | `garage-gw2.example.com`   | -        | -      | -    | `IP server2`             |
-| CNAME | `garage-node3.example.com` | -        | -      | -    | `garage-gw2.example.com` |
+| A     | `garage-node3.example.com` | -        | -      | -    | `IP server2`             |
 
 Be mindful as to how long it will take for the DNS records to propagate.
 
