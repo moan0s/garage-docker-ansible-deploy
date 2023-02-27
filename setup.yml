@@ -10,19 +10,20 @@
     # This role has no tasks at all
     - role: galaxy/com.devture.ansible.role.systemd_docker_base
 
-    - when: devture_timesync_installation_enabled | bool
-      role: galaxy/com.devture.ansible.role.timesync
+    - when: garage_playbook_docker_installation_enabled | bool
+      role: galaxy/geerlingguy.docker
+      vars:
+        docker_install_compose: false
       tags:
-        - setup-timesync
+        - setup-docker
         - setup-all
-        - install-timesync
+        - install-docker
         - install-all
 
     - role: custom/base
       tags:
         - setup-all
         - install-all
-
 
     # This role exposes various tags (setup-garage, setup-all) so we don't tag it here.
     - role: custom/garage

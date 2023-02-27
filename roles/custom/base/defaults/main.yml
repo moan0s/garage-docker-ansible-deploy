@@ -5,6 +5,8 @@ garage_user_username: garage
 garage_user_uid: 3993
 garage_user_gid: 3993
 
+garage_playbook_docker_installation_enabled: true
+
 # The architecture that your server runs.
 # Recognized values by us are 'amd64', 'arm32' and 'arm64'.
 # Not all architectures support all services, so your experience (on non-amd64) may vary.
