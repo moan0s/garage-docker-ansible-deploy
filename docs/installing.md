@@ -41,4 +41,5 @@ After installing, you can start services with `just start-all` (or `ansible-play
 **Important**
 
 When all services are successfully started you need to configure the nodes (connect them and apply a layout).
-Use `ansible-playbook -i inventory/hosts setup.yml --tags=configure-garage`
+Use `ansible-playbook -i inventory/hosts setup.yml --tags=configure-garage`. Due to a bug this will currently fail the
+first time so just execute the command twice.
