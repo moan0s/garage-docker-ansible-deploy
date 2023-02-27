@@ -4,19 +4,34 @@
   ansible.builtin.shell:
     cmd:  "docker exec -it garage_{{item.name}} /garage status | awk 'FNR == 3  {print $1}'"
   register: garage_node_prefix
+
+- name: Check node prefix
+  ansible.builtin.assert:
+    that:
+      - garage_node_prefix.stdout | length > 0
+    fail_msg: "No node prefix found. Run `docker exec -it garage_{{item.name}} /garage status` on your server to see whats wrong"
+
 - name: Get Garage node id
   ansible.builtin.shell:
     cmd: "docker exec -it garage_{{item.name}} /garage node id | awk 'FNR == 1 {print}'"
   register: garage_node_id
+
+- name: Check node id
+  ansible.builtin.assert:
+    that:
+      - garage_node_id.stdout | length > 0
+    fail_msg: "No node id found. Run `docker exec -it garage_{{item.name}} /garage node id` on your server to see whats wrong"
+
 - name: Build list of node ids
   ansible.builtin.set_fact:
     garage_garage_node_ids: "{{garage_garage_node_ids + [garage_node_id]}}"
+
 - name: Configure Garage data nodes
   ansible.builtin.shell:
     cmd: "docker exec --user={{ garage_user_uid }}:{{ garage_user_gid }} garage_{{item.name}} /garage layout assign -z {{ garage_garage_zone }} -c {{ item.capacity }} {{ garage_node_prefix.stdout }}"
   when: not item.gateway
+
 - name: Configure Garage gateway node
   ansible.builtin.shell:
     cmd: "docker exec --user={{ garage_user_uid }}:{{ garage_user_gid }} garage_{{item.name}} /garage layout assign --gateway -z {{ garage_garage_zone }} {{ garage_node_prefix.stdout }}"
   when: item.gateway
-
