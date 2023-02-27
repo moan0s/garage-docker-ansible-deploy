@@ -1,7 +1,10 @@
-# Generating a strong secret is advised (e.g. `pwgen -s 64 1`).
+# Garage uses a secret key that is shared between all nodes of the cluster in order to identify these nodes and allow
+# them to communicate together. This key should be specified here in the form of a 32-byte hex-encoded random string.
+# Such a string can be generated with a command such as ´openssl rand -hex 32´.
 garage_garage_rpc_secret: 'verysecret'
 
-# Generating a strong secret is advised (e.g. `pwgen -s 64 1`).
+# Token for accessing the admin API.
+# Generating a strong secret is advised (e.g. `openssl rand -hex 32`).
 garage_garage_admin_token: 'verysecret'
 
 # Uncomment the following line if you run this on a Raspberry Pi 3
