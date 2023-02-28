@@ -2,6 +2,8 @@
 
 ![Garage Logo](docs/assets/garage-logo.svg)
 
+![Lint badge](https://woodpecker.hyteck.de/api/badges/moan0s/garage-docker-ansible-deploy/status.svg)
+
 Garage is an open-source distributed object storage service tailored for self-hosting. This playbook helps you to set up
 such a cluster:
 
