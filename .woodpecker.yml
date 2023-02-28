@@ -1,6 +1,6 @@
 ---
 pipeline:
-  ansible-lint:
+  build:
     image: cytopia/ansible-lint
     commands:
       - "ansible-lint"
