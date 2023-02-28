@@ -55,7 +55,8 @@ This playbook started as a copy of these projects and aims to have a similar lay
 
 # Miscellaneous
 
-Set `garage_garage_debian_buster: true` to avoid a bug with debian buster (tested on a raspi 3A) ([more information](https://github.com/dani-garcia/vaultwarden/issues/2497))
+* Set `garage_garage_debian_buster: true` to avoid a bug with debian buster (tested on a raspi 3A) ([more information](https://github.com/dani-garcia/vaultwarden/issues/2497))
+* Installing docker on Raspberry PI needs you to set `docker_apt_arch: arm64` in your `vars.yml`. Refer to [this issue](https://github.com/geerlingguy/ansible-role-docker/issues/402) for more information.
 
 # Developer Notes
 
