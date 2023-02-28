@@ -3,4 +3,4 @@ pipeline:
   ansible-lint:
     image: cytopia/ansible-lint
     commands:
-      - "ansible-lint *.yml"
+      - "ansible-lint"
