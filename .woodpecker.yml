@@ -1,0 +1,10 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: test
+    image: cytopia/ansible-lint
+    commands:
+      - "ansible-lint *.yaml"
