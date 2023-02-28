@@ -28,7 +28,7 @@
   register: garage_garage_create_key_result
   changed_when: garage_garage_create_key_result.rc == 0
 
-- debug:
+- ansible.builtin.debug:
     var: garage_garage_create_key_result.stdout_lines
 
 - name: Allow key to access bucket

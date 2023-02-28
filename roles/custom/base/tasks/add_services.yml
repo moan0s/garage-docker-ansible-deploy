@@ -9,4 +9,4 @@
       {% endfor %}
       ]
 - ansible.builtin.set_fact:
-    devture_systemd_service_manager_services_list_auto: "{{ devture_systemd_service_manager_services_list_auto|default([]) + garage_garage_node_services }}"
+    devture_systemd_service_manager_services_list_auto: "{{ devture_systemd_service_manager_services_list_auto | default([]) + garage_garage_node_services }}"

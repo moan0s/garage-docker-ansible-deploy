@@ -19,5 +19,5 @@
   when: "garage_garage_staged_role_changes_line.stdout | length > 0"
 - name: Apply layout version number
   ansible.builtin.shell:
-    cmd: "docker exec -it garage_{{garage_garage_nodes[0].name}} /garage layout apply --version {{ garage_garage_layout_version.stdout }}"
+    cmd: "docker exec -it garage_{{ garage_garage_nodes[0].name }} /garage layout apply --version {{ garage_garage_layout_version.stdout }}"
   when: "garage_garage_staged_role_changes_line.stdout | length > 0"
