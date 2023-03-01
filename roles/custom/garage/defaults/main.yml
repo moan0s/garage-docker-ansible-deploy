@@ -50,6 +50,8 @@ garage_garage_admin_api_enabled: true
 
 garage_garage_region: "garage"
 
+garage_garage_db_engine: "lmdb"
+
 garage_garage_bind_interface_prefix: "0.0.0.0"
 garage_garage_rpc_bind_port: 3901
 garage_garage_api_bind_port: 3900
