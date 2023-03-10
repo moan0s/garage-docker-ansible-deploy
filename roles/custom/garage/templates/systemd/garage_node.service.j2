@@ -38,7 +38,7 @@ ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_syste
 
 Restart=always
 RestartSec=30
-SyslogIdentifier=garage_{{ item.name }}
+SyslogIdentifier=garage-{{ item.name }}
 
 [Install]
 WantedBy=multi-user.target

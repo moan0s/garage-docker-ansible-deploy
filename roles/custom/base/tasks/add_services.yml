@@ -5,7 +5,7 @@
     garage_garage_node_services: >
       [
       {% for node in garage_garage_nodes %}
-      {'name': 'garage_{{ node.name }}.service', 'priority': 1000},
+      {'name': 'garage-{{ node.name }}.service', 'priority': 1000},
       {% endfor %}
       ]
 - ansible.builtin.set_fact:

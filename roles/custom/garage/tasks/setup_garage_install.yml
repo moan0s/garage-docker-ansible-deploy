@@ -60,6 +60,6 @@
 - name: Ensure garage.service installed
   ansible.builtin.template:
     src: "{{ role_path }}/templates/systemd/garage_node.service.j2"
-    dest: "{{ devture_systemd_docker_base_systemd_path }}/garage_{{ item.name }}.service"
+    dest: "{{ devture_systemd_docker_base_systemd_path }}/garage-{{ item.name }}.service"
     mode: 0644
   loop: "{{ garage_garage_nodes }}"
