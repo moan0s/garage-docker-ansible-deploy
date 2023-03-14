@@ -7,7 +7,7 @@
 
 - name: Ensure garage node is started
   ansible.builtin.service:
-    name: "garage_{{ garage_garage_nodes[0].name }}"
+    name: "garage-{{ garage_garage_nodes[0].name }}"
     state: started
     daemon_reload: true
   register: start_result
