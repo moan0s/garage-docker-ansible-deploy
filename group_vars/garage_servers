@@ -1,5 +1,27 @@
 ---
 
+garage_identifier: garage
+# Base directory that contains everything
+garage_base_path: "/{{ garage_identifier }}"
+
+garage_user_username: "{{ garage_identifier }}"
+garage_user_uid: 3993
+garage_user_gid: 3993
+
+garage_playbook_docker_installation_enabled: true
+
+# The architecture that your server runs.
+# Recognized values by us are 'amd64', 'arm32' and 'arm64'.
+# Not all architectures support all services, so your experience (on non-amd64) may vary.
+garage_architecture: "{{ 'amd64' if ansible_architecture == 'x86_64' else ('arm64' if ansible_architecture == 'aarch64' else ('arm32' if ansible_architecture.startswith('armv') else '')) }}"
+
+garage_docker_network: '{{ garage_identifier }}'
+
+garage_playbook_traefik_role_enabled: true
+
+garage_debian_buster: false
+
+
 ########################################################################
 #                                                                      #
 # Playbook                                                            #
@@ -42,22 +64,22 @@ devture_systemd_service_manager_services_list_auto: |
 
 ########################################################################
 #                                                                      #
-# garage_garage                                                     #
+# garage                                                     #
 #                                                                      #
 ########################################################################
 
-garage_garage_systemd_required_services_list: |
+garage_systemd_required_services_list: |
   {{
     (['docker.service'])
   }}
 
-garage_garage_container_labels_traefik_enabled: true
-garage_garage_container_labels_traefik_docker_network: "{{ garage_playbook_reverse_proxyable_services_additional_network }}"
-garage_garage_container_additional_networks: "{{ [garage_playbook_reverse_proxyable_services_additional_network] if garage_playbook_reverse_proxyable_services_additional_network else [] }}"
+garage_container_labels_traefik_enabled: true
+garage_container_labels_traefik_docker_network: "{{ garage_playbook_reverse_proxyable_services_additional_network }}"
+garage_container_additional_networks: "{{ [garage_playbook_reverse_proxyable_services_additional_network] if garage_playbook_reverse_proxyable_services_additional_network else [] }}"
 
 ########################################################################
 #                                                                      #
-# /garage_garage                                                    #
+# /garage                                                    #
 #                                                                      #
 ########################################################################
 

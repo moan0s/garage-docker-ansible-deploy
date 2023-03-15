@@ -1,24 +1,24 @@
 # Garage uses a secret key that is shared between all nodes of the cluster in order to identify these nodes and allow
 # them to communicate together. This key should be specified here in the form of a 32-byte hex-encoded random string.
 # Such a string can be generated with a command such as ´openssl rand -hex 32´.
-garage_garage_rpc_secret: 'verysecret'
+garage_rpc_secret: 'verysecret'
 
 # Token for accessing the admin API.
 # Generating a strong secret is advised (e.g. `openssl rand -hex 32`).
-garage_garage_admin_token: 'verysecret'
+garage_admin_token: 'verysecret'
 
 # Uncomment the following line if you run this on a Raspberry Pi 3
-# garage_garage_debian_buster: true
+# garage_debian_buster: true
 
 # This is the zone that your host will be in. Refer to https://garagehq.deuxfleurs.fr/documentation/cookbook/real-world/#creating-a-cluster-layout
 # for more information
-garage_garage_zone: "dc1"
+garage_zone: "dc1"
 
 # The replication mode defines how many copies of your data are stored per region
 # "2" means data stored on Garage will be stored on two different nodes, if possible in different zones. Adjust this
 # to your needs.
 # Full reference: https://garagehq.deuxfleurs.fr/documentation/reference-manual/configuration/#replication-mode
-garage_garage_replication_mode: 2
+garage_replication_mode: 2
 
 
 ########################
@@ -28,12 +28,12 @@ garage_garage_replication_mode: 2
 # This is an example configuration of nodes. On this host we run 2 data nodes that both manage 1 3TB drive.
 # We access the nodes via a gateway node.
 
-garage_garage_node1_base_path: "/media/drive1/garage/node1"
-garage_garage_node2_base_path: "/media/drive2/garage/node2"
-garage_garage_nodes:
+garage_node1_base_path: "/media/drive1/garage/node1"
+garage_node2_base_path: "/media/drive2/garage/node2"
+garage_nodes:
   - name: "gateway1"
-    metadata_path: "{{ garage_garage_meta_path }}/gw1"
-    data_path: "{{ garage_garage_data_path }}/gw1"
+    metadata_path: "{{ garage_meta_path }}/gw1"
+    data_path: "{{ garage_data_path }}/gw1"
     gateway: true
     rpc_bind_port: 3901
     node_addr: "garage-gw1.example.com"
@@ -41,15 +41,15 @@ garage_garage_nodes:
   - name: "node1"
     gateway: false
     capacity: 3
-    metadata_path: "{{ garage_garage_node1_base_path }}/metadata"
-    data_path: "{{ garage_garage_node1_base_path }}/data"
+    metadata_path: "{{ garage_node1_base_path }}/metadata"
+    data_path: "{{ garage_node1_base_path }}/data"
     rpc_bind_port: 3911
     node_addr: "garage-node1.example.com"
   - name: "node2"
     gateway: false
     capacity: 3
-    metadata_path: "{{ garage_garage_node2_base_path }}/metadata"
-    data_path: "{{ garage_garage_node2_base_path }}/data"
+    metadata_path: "{{ garage_node2_base_path }}/metadata"
+    data_path: "{{ garage_node2_base_path }}/data"
     rpc_bind_port: 3921
     node_addr: "garage-node2.example.com"
 
