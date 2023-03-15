@@ -26,7 +26,7 @@
         - install-all
 
     # This role exposes various tags (setup-garage, setup-all) so we don't tag it here.
-    - role: custom/garage
+    - role: galaxy/garage
 
     - when: garage_playbook_traefik_role_enabled | bool
       role: galaxy/com.devture.ansible.role.traefik
