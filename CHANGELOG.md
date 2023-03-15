@@ -1,3 +1,8 @@
+# 2023-03-15
+
+* BREAKING CHANGE: Most variables have changed their name. Check `examples/host-vars.yml` to find the new names (usually `garage_garage_<var>` -> `garage_<var>`)
+* Moved the main role to https://github.com/moan0s/role-garage to make it usable in [Mother-of-All-Self-Hosting Ansible playbook](https://github.com/mother-of-all-self-hosting/mash-playbook)
+
 # 2023-03-10
 
 The systemd services are renamed to use a `-` instead of `_`. If you already use this playbook that means:
