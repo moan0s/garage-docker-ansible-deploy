@@ -13,7 +13,7 @@ garage_garage_data_path: "{{ garage_garage_base_path }}/data"
 
 garage_garage_systemd_required_services_list: ['docker.service']
 
-garage_garage_version: 0.8.1
+garage_garage_version: 0.8.2
 
 garage_garage_container_image: "docker.io/dxflrs/garage:v{{ garage_garage_version }}"
 
